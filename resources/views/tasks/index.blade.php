@@ -10,7 +10,7 @@
 
         <!-- New Task Form -->
         <form action="/task" method="POST" class="form-horizontal">
-            {{ csrf_field() }}
+            @csrf
 
             <!-- Task Name -->
             <div class="row form-group">
@@ -52,8 +52,13 @@
                                     <div>{{ $task->name }}</div>
                                 </td>
 
+                               <!-- Delete Button -->
                                 <td>
-                                    <!-- TODO: Delete Button -->
+                                    <form action="/task/{{ $task->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button>Delete Task</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
