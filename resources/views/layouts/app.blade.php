@@ -7,11 +7,17 @@
     </head>
     <body>
         <div class="container">
+           
+           <div class="col-4 offset-4">
+               <h2>Todo list using Laravel</h2>
+           </div>
+           
             <div class="navbar navbar-default">
-
+                <!-- navbar items -->
             </div>
+            
+            @yield('content')    
         </div>
 
-        @yield('content')
     </body>
 </html>
