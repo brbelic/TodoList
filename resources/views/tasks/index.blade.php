@@ -37,50 +37,48 @@
             <div class="panel-body">
                 <div class="table table-striped task-table">
 
-                    <!-- Table Headings -->
-                    <!--<thead>
-                        <th>Task</th>
-                        <th>&nbsp;</th>
-                    </thead>-->
+                    @foreach ($tasks as $task)
+                        <div class="row d-flex align-items-center py-3 mb-3 bg-white">
+                            <!-- Task Name -->
+                            <div class="col-9 offset-1 table-text">
 
-                    <!-- Table Body -->
-                    <!--<tbody>-->
-                        @foreach ($tasks as $task)
-                            <div class="row d-flex align-items-center py-3 mb-3 bg-white">
-                                <!-- Task Name -->
-                                <div class="col-9 offset-1 table-text">
-                                    
-                                    <form method="POST" action="/completed-task/{{ $task->id }}">
-                                        @if ($task->completed)
-                                            @method('DELETE')
-                                        @endif
-
-                                        @csrf
-
-                                        <span class="{{ $task->completed ? 'line-through' : 'none-decoration' }}">
-                                            {{ $task->name }}
-                                        </span>
-                                       
-                                        <input type="checkbox" name="completed"  class="float-right align-middle"
-                                            onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
-                                    </form>
-                                    
-                                </div>
-
-                               <!-- Delete Button -->
-                                <div class="col-2">
-                                    <form action="/task/{{ $task->id }}" method="POST">
-                                        @csrf
+                                <form method="POST" action="/completed-task/{{ $task->id }}">
+                                    @if ($task->completed)
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">
-                                            Delete Task
-                                        </button>
-                                    </form>
-                                </div>
+                                    @endif
+
+                                    @csrf
+
+                                    <span class="{{ $task->completed ? 'line-through' : 'none-decoration' }}">
+                                        {{ $task->name }}
+                                    </span>
+
+                                    <input type="checkbox" name="completed"  class="float-right align-middle"
+                                        onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
+                                </form>
+
                             </div>
-                        @endforeach
-                    <!--</tbody>-->
+
+                           <!-- Delete Button -->
+                            <div class="col-2">
+                                <form action="/task/{{ $task->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete Task
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
+
+                <div class="row d-flex align-items-center justify-content-center">
+                    <div>
+                        {{ $tasks->links() }}
+                    </div>
+                </div>
+                
             </div>
         </div>
     @endif
