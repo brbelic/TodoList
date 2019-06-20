@@ -13,7 +13,7 @@
             @csrf
 
             <!-- Task Name -->
-            <div class="row form-group">
+            <div class="row py-3 form-group">
                 <div class="col-9 offset-1">
                     <input type="text" name="name" id="task-name" class="form-control" placeholder="Enter your Task">
                 </div>
@@ -29,41 +29,58 @@
     </div>
 
     @if (count($tasks) > 0)
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Current Tasks
+        <div class="col-8 offset-2 pt-3 panel panel-default">
+            <div class="col-6 offset-3 d-flex justify-content-center panel-heading">
+                <h5>Current Tasks</h5>
             </div>
 
             <div class="panel-body">
-                <table class="table table-striped task-table">
+                <div class="table table-striped task-table">
 
                     <!-- Table Headings -->
-                    <thead>
+                    <!--<thead>
                         <th>Task</th>
                         <th>&nbsp;</th>
-                    </thead>
+                    </thead>-->
 
                     <!-- Table Body -->
-                    <tbody>
+                    <!--<tbody>-->
                         @foreach ($tasks as $task)
-                            <tr>
+                            <div class="row d-flex align-items-center py-3 mb-3 bg-white">
                                 <!-- Task Name -->
-                                <td class="table-text">
-                                    <div>{{ $task->name }}</div>
-                                </td>
+                                <div class="col-9 offset-1 table-text">
+                                    
+                                    <form method="POST" action="/completed-task/{{ $task->id }}">
+                                        @if ($task->completed)
+                                            @method('DELETE')
+                                        @endif
+
+                                        @csrf
+
+                                        <span class="{{ $task->completed ? 'line-through' : 'none-decoration' }}">
+                                            {{ $task->name }}
+                                        </span>
+                                       
+                                        <input type="checkbox" name="completed"  class="float-right align-middle"
+                                            onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
+                                    </form>
+                                    
+                                </div>
 
                                <!-- Delete Button -->
-                                <td>
+                                <div class="col-2">
                                     <form action="/task/{{ $task->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button>Delete Task</button>
+                                        <button type="submit" class="btn btn-danger">
+                                            Delete Task
+                                        </button>
                                     </form>
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
                         @endforeach
-                    </tbody>
-                </table>
+                    <!--</tbody>-->
+                </div>
             </div>
         </div>
     @endif
