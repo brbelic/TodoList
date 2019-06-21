@@ -20,7 +20,7 @@
                 
                 <!-- Add Task Button -->
                 <div class="col-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary shadow-sm">
                         Add Task
                     </button>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="table table-striped task-table">
 
                     @foreach ($tasks as $task)
-                        <div class="row d-flex align-items-center py-3 mb-3 bg-white rounded">
+                        <div class="row d-flex align-items-center py-3 mb-3 bg-white rounded shadow-sm">
                             <!-- Task Name -->
                             <div class="col-9 offset-1 table-text">
 
@@ -64,7 +64,7 @@
                                 <form action="/task/{{ $task->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">
+                                    <button type="submit" class="btn btn-danger shadow-sm">
                                         Delete Task
                                     </button>
                                 </form>
