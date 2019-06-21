@@ -31,14 +31,14 @@
     @if (count($tasks) > 0)
         <div class="col-8 offset-2 pt-3 panel panel-default">
             <div class="col-6 offset-3 d-flex justify-content-center panel-heading">
-                <h5>Current Tasks</h5>
+                <h5>My Tasks</h5>
             </div>
 
             <div class="panel-body">
                 <div class="table table-striped task-table">
 
                     @foreach ($tasks as $task)
-                        <div class="row d-flex align-items-center py-3 mb-3 bg-white">
+                        <div class="row d-flex align-items-center py-3 mb-3 bg-white rounded">
                             <!-- Task Name -->
                             <div class="col-9 offset-1 table-text">
 
