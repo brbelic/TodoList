@@ -16,7 +16,8 @@ class TaskRepository
     public function forUser(User $user)
     {
         return Task::where('user_id', $user->id)
+                    ->orderBy('completed', 'desc')
                     ->orderBy('created_at', 'desc')
-                    ->paginate(5);
+                    ->paginate(10);
     }    
 }
