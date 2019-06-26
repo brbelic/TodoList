@@ -35,7 +35,8 @@ class TaskController extends Controller
             'name' => $request->name,
         ]);
         
-        return redirect('/tasks');
+        return response()->json(['ok' => 'ok']);
+        //return redirect('/tasks');
     }
     
     public function destroy(Request $request, Task $task)

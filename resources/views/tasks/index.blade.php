@@ -9,18 +9,19 @@
         @include('common.errors')
 
         <!-- New Task Form -->
-        <form action="/task" method="POST" class="form-horizontal">
-            @csrf
+        <!--<form action="/task" method="POST" class="form-horizontal">   MAKNUTO + BTN-ADD -->
+        <form>       
+            <!--!!!!!!  maknut csrf !!!!!! -->
 
             <!-- Task Name -->
             <div class="row py-3 form-group">
-                <div class="col-9 offset-1">
+                <div class="addTaskName col-9 offset-1">
                     <input type="text" name="name" id="task-name" class="form-control" placeholder="Enter your Task">
                 </div>
                 
                 <!-- Add Task Button -->
                 <div class="col-2">
-                    <button type="submit" class="btn btn-primary shadow-sm">
+                    <button type="submit" class="btn btn-add btn-primary shadow-sm">
                         Add Task
                     </button>
                 </div>
