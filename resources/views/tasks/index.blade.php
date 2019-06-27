@@ -10,13 +10,13 @@
 
         <!-- New Task Form -->
         <!--<form action="/task" method="POST" class="form-horizontal">   MAKNUTO + BTN-ADD -->
-        <form>       
+        <form>
             <!--!!!!!!  maknut csrf !!!!!! -->
-
+            
             <!-- Task Name -->
             <div class="row py-3 form-group">
                 <div class="addTaskName col-9 offset-1">
-                    <input type="text" name="name" id="task-name" class="form-control" placeholder="Enter your Task">
+                    <input type="text" name="name" id="task-name" class="form-control" placeholder="Enter your Task" required>
                 </div>
                 
                 <!-- Add Task Button -->
@@ -36,7 +36,7 @@
             </div>
 
             <div class="panel-body">
-                <div class="table table-striped task-table">
+                <div class="table table-striped task-table" id="task-table">
 
                     @foreach ($tasks as $task)
                         <div class="row d-flex align-items-center py-3 mb-3 bg-white rounded shadow-sm">

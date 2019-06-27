@@ -35,7 +35,7 @@ class TaskController extends Controller
             'name' => $request->name,
         ]);
         
-        return response()->json(['ok' => 'ok']);
+        return $request->all();
         //return redirect('/tasks');
     }
     

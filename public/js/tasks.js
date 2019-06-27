@@ -8,16 +8,21 @@ $(document).ready(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $.ajax({
-            type: 'POST',
-            url: '/task',
-            data: {
-                name: $(".addTaskName input[name=name]").val(),
-            },
-            dataType: 'json',
-            success: function(response) {
-                window.location.reload();
-            },
-        });
+        
+        var taskName = $(".addTaskName input[name=name]").val();
+        if(taskName){
+            $.ajax({
+                type: 'POST',
+                url: '/task',
+                data: {
+                    name: taskName,
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    $('#task-table').load(location.href + ' #task-table');
+                },
+            });
+        }
     });
 });
