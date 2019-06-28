@@ -37,12 +37,11 @@ class TaskController extends Controller
                 return response()->json(['errors'=>$validator->errors()->all()]);
             }
         
-            $request->user()->tasks()->create([
+            $task = $request->user()->tasks()->create([
                 'name' => $request->name,
             ]);
         
-            return $request->all();
-
+            return $task;
         }
     
     public function destroy(Request $request, Task $task)

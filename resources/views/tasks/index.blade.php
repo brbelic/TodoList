@@ -75,11 +75,10 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-
-                <div class="row d-flex align-items-center justify-content-center">
-                    <div>
-                        {{ $tasks->links() }}
+                    <div class="row d-flex align-items-center justify-content-center">
+                        <div>
+                            {{ $tasks->links() }}
+                        </div>
                     </div>
                 </div>
                 
