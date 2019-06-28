@@ -25,19 +25,25 @@ class TaskController extends Controller
         ]);
     }
     
+    
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name'=>'required|max:255',
-        ]);
+        {
+            $validator = \Validator::make($request->all(), [
+                'name' => 'required|max:255',
+            ]);
+
+            if ($validator->fails())
+            {
+                return response()->json(['errors'=>$validator->errors()->all()]);
+            }
         
-        $request->user()->tasks()->create([
-            'name' => $request->name,
-        ]);
+            $request->user()->tasks()->create([
+                'name' => $request->name,
+            ]);
         
-        return $request->all();
-        //return redirect('/tasks');
-    }
+            return $request->all();
+
+        }
     
     public function destroy(Request $request, Task $task)
     {
@@ -45,6 +51,6 @@ class TaskController extends Controller
         
         $task->delete();
         
-        return redirect('/tasks');
+        return response ()->json ();
     }
 }

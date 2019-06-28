@@ -7,6 +7,7 @@
     <div class="col-8 offset-2 panel-body">
         <!-- Display Validation Errors -->
         @include('common.errors')
+        <div class="alert alert-danger" style="display:none"></div>
 
         <!-- New Task Form -->
         <!--<form action="/task" method="POST" class="form-horizontal">   MAKNUTO + BTN-ADD -->
@@ -16,7 +17,7 @@
             <!-- Task Name -->
             <div class="row py-3 form-group">
                 <div class="addTaskName col-9 offset-1">
-                    <input type="text" name="name" id="task-name" class="form-control" placeholder="Enter your Task" required>
+                    <input type="text" name="name" id="task-name" class="form-control" placeholder="Enter your Task">
                 </div>
                 
                 <!-- Add Task Button -->
@@ -39,7 +40,7 @@
                 <div class="table table-striped task-table" id="task-table">
 
                     @foreach ($tasks as $task)
-                        <div class="row d-flex align-items-center py-3 mb-3 bg-white rounded shadow-sm">
+                        <div id="{{ $task->id }}" class="row d-flex align-items-center py-3 mb-3 bg-white rounded shadow-sm">
                             <!-- Task Name -->
                             <div class="col-9 offset-1 table-text">
 
@@ -50,7 +51,7 @@
 
                                     @csrf
 
-                                    <span class="{{ $task->completed ? 'line-through' : 'none-decoration' }}">
+                                    <span class="{{ $task->completed ? 'completed' : 'uncompleted' }}">
                                         {{ $task->name }}
                                     </span>
 
@@ -61,11 +62,13 @@
                             </div>
 
                            <!-- Delete Button -->
-                            <div class="col-2">
-                                <form action="/task/{{ $task->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger shadow-sm">
+                            <div class="delete col-2">
+                                <!--<form action="/task/{{ $task->id }}" method="POST">--><form>
+                                   
+                                    <!--@csrf
+                                    @method('DELETE')-->
+                                    <button type="submit" class="btn btn-del btn-danger shadow-sm" value=" {{ $task->id }} ">
+                                       <!--<input class="task-id" hidden value=" {{ $task->id }} ">-->
                                         Delete Task
                                     </button>
                                 </form>
