@@ -25,14 +25,18 @@ $(document).ready(function() {
                         })
                     } else {
                         $('.alert-danger').hide();
-                        $('#task-table').load(location.href + ' #task-table');
                         $(".addTaskName input[name=name]").val(''); 
+                        console.log(data.id);
+                        $('#task-table').load(location.href + ' #task-table');
+                    
+                                              
+                                              
                     }
                 },
             });
     });
     
-    $(".btn-del").click(function(e) {
+    $(document).on('click', ".btn-del", function(e) {
         
         e.preventDefault();
         
@@ -42,7 +46,7 @@ $(document).ready(function() {
             }
         });
         
-        var taskId = $.trim($(this).prop('value'));
+        var taskId = $(this).prop('value');
         console.log(taskId);
         
         if(taskId){
@@ -52,7 +56,6 @@ $(document).ready(function() {
                 dataType: 'json',
                 success: function(data) {
                     $('#'+taskId).remove();
-                    console.log("#" + taskId);
                 },
             });
         }

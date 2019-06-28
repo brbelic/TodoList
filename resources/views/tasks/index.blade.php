@@ -31,7 +31,7 @@
     </div>
 
     @if (count($tasks) > 0)
-        <div class="col-8 offset-2 pt-3 panel panel-default">
+        <div class="col-8 offset-2 pt-3 panel panel-default" id="tasks-list">
             <div class="col-6 offset-3 d-flex justify-content-center panel-heading">
                 <h5>My Tasks</h5>
             </div>
@@ -67,7 +67,7 @@
                                    
                                     <!--@csrf
                                     @method('DELETE')-->
-                                    <button type="submit" class="btn btn-del btn-danger shadow-sm" value=" {{ $task->id }} ">
+                                    <button type="submit" class="btn btn-del btn-danger shadow-sm" value="{{ $task->id }}">
                                        <!--<input class="task-id" hidden value=" {{ $task->id }} ">-->
                                         Delete Task
                                     </button>
