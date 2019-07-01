@@ -30,12 +30,12 @@
         </form>  
     </div>
 
-    @if (count($tasks) > 0)
+    
         <div class="col-8 offset-2 pt-3 panel panel-default" id="tasks-list">
             <div class="col-6 offset-3 d-flex justify-content-center panel-heading">
                 <h5>My Tasks</h5>
             </div>
-
+            <hr>
             <div class="panel-body">
                 <div class="table table-striped task-table" id="task-table">
 
@@ -84,6 +84,6 @@
                 
             </div>
         </div>
-    @endif
+    
     
 @endsection

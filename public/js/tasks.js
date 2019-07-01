@@ -15,7 +15,6 @@ $(document).ready(function() {
                 url: '/task',
                 data: {
                     name: taskName,
-                    completed: false,
                 },
                 dataType: 'json',
                 success: function(data) { 
@@ -29,19 +28,22 @@ $(document).ready(function() {
                         $(".addTaskName input[name=name]").val(''); 
                         console.log(data);
                         //$('#task-table').load(location.href + ' #task-table');
-                        $('#task-table').append(
+                        $('#task-table').prepend(
                             '<div id='+data.id+' class="row d-flex align-items-center py-3 mb-3 bg-white rounded shadow-sm">' +
                             '<div class="col-9 offset-1 table-text">' +
-                                '<form method="POST" action="/completed-task/'+data.id+'">' +
+                                //'<form method="POST" action="/completed-task/'+data.id+'">' +
+                            '<form>' +
                                     //'@if ($task->completed)' +
                                         //'@method("DELETE")' +
                                     //'@endif' +
                                     //'@csrf' +
-                                    '<span class="{{'+data.completed+' ? "completed" : "uncompleted}}">' +
+                                    //'<span class="{{'+data.completed+' ? "completed" : "uncompleted}}">' +
+                                    '<span class="uncompleted">' +
                                         data.name+
                                     '</span>' +
-                                    '<input type="checkbox" name="completed"  class="float-right align-middle"' +
-                                        'onChange="this.form.submit()" {{'+data.completed+' ? "checked" : "" }}>' +
+                                    '<input type="checkbox" name="completed"  class="float-right align-middle" value="'+data.id+'"' +
+                                        //'onChange="this.form.submit()" {{'+data.completed+' ? "checked" : "" }}>' +
+                                        'onChange="this.form.submit()">' +
                                 '</form>' +
                             '</div>' +
                             '<div class="delete col-2">' +
@@ -51,10 +53,7 @@ $(document).ready(function() {
                                 '</form>' +
                             '</div>' +
                         '</div>'    
-                        );
-                    
-                                              
-                                              
+                        );                               
                     }
                 },
             });
@@ -84,5 +83,4 @@ $(document).ready(function() {
             });
         }
     });
-    
 });
