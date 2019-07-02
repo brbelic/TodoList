@@ -24,3 +24,7 @@ Route::post('task', 'TaskController@store');
 Route::post('task/{task}', 'TaskController@destroy');
 Route::post('/completed-task/{task}', 'CompletedTaskController@store');
 Route::delete('/completed-task/{task}', 'CompletedTaskController@destroy');
+
+Route::get('admin/users', 'UsersController@index');
+Route::post('admin/task', 'UsersController@store');
+Route::delete('/admin/user/{user}', 'UsersController@destroy');

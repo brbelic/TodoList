@@ -69,6 +69,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/tasks') }}">My Tasks</a>
+                        <a href="{{ url('/admin/users') }}">Admin</a> <!-- added -->
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
